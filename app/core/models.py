@@ -18,7 +18,7 @@ class UserManager(BaseUserManager):
     def create_superuser(self, email, password):
         user = self.create_user(email, password)
         user.is_staff = True
-        user.is_admin = True
+        user.is_superuser = True
         user.save(using=self._db)
 
         return user
@@ -35,10 +35,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # put a field as a default username field if it doesn't exist
     USERNAME_FIELD = "email"
-
-    @property
-    def is_superuser(self):
-        return self.is_admin
 
     def __str__(self):
         return self.email
