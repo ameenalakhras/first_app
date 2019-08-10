@@ -5,6 +5,16 @@ python:
 services:
   - docker
 
+environment:
+  - DB_HOST=db
+  - DB_NAME=app
+  - DB_USER=postgres
+  - DB_PASS=supersecretpassword
+  - POSTGRES_DB=app
+  - POSTGRES_USER=postgres
+  - POSTGRES_PASSWORD=supersecretpassword
+
+
 before_script: pip install docker-compose
 
 script:
