@@ -1,5 +1,9 @@
 app/*/__pycache__/
 app/*/*/__pycache__/
+
 app/db.sqlite3
-app/core/migrations/
+
+app/core/migrations/*.py
+!app/core/migrations/__init__.py
+
 .idea/
