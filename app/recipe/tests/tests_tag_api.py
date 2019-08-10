@@ -33,7 +33,6 @@ class PrivateTagsApiTests(TestCase):
         self.client = APIClient()
         self.client.force_authenticate(self.user)
 
-
     def test_retrieve_tags(self):
         """Test retrieving tags"""
         Tag.objects.create(user=self.user, name="Vegan")
@@ -63,7 +62,7 @@ class PrivateTagsApiTests(TestCase):
 
     def test_create_tag_successful(self):
         """Test that creating a new tag is successful"""
-        payload = {"name":"Test tag"}
+        payload = {"name": "Test tag"}
         self.client.post(TAGS_URL, payload)
 
         exists = Tag.objects.filter(
@@ -74,7 +73,7 @@ class PrivateTagsApiTests(TestCase):
         self.assertTrue(exists)
 
     def test_create_tag_invalid(self):
-        payload = {"name":""}
+        payload = {"name": ""}
         response = self.client.post(TAGS_URL, payload)
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
